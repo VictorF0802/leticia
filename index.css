@@ -1,0 +1,11 @@
+.bolo{
+    width: 10px;
+    max-width: 10%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+img{
+    width:100px;
+    height:auto;
+}

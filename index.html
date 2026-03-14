@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Aniversário</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+font-family:Arial;
+color:white;
+text-align:center;
+overflow:hidden;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+/* BOLO 3D */
+
+.cake{
+position:relative;
+transform-style:preserve-3d;
+transform:rotateX(20deg);
+margin-bottom:30px;
+}
+
+.layer{
+width:200px;
+height:60px;
+background:#ffb347;
+border-radius:10px;
+margin:auto;
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+.layer2{
+background:#ff8c42;
+margin-top:-15px;
+}
+
+.layer3{
+background:#ff6f61;
+margin-top:-15px;
+}
+
+/* VELA */
+
+.candle{
+width:10px;
+height:40px;
+background:white;
+margin:auto;
+position:relative;
+top:-170px;
+}
+
+.flame{
+width:15px;
+height:25px;
+background:orange;
+border-radius:50%;
+position:absolute;
+top:-25px;
+left:-2px;
+animation: flame 0.3s infinite alternate;
+}
+
+@keyframes flame{
+from{transform:scale(1)}
+to{transform:scale(1.2)}
+}
+
+/* BALÕES */
+
+.balloon{
+position:absolute;
+bottom:-100px;
+width:40px;
+height:60px;
+border-radius:50%;
+animation: subir 8s infinite;
+}
+
+@keyframes subir{
+0%{transform:translateY(0)}
+100%{transform:translateY(-120vh)}
+}
+
+/* MENSAGEM */
+
+#mensagem{
+font-size:24px;
+max-width:300px;
+margin-top:20px;
+}
+
+button{
+margin-top:20px;
+padding:15px 25px;
+border:none;
+border-radius:20px;
+font-size:18px;
+background:#ff4081;
+color:white;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🎉 Feliz Aniversário!!! 🎉</h1>
+
+<h2 id="nome">Letícia Góes</h2>
+
+<img src="c:\Users\Victor\Downloads\aniversario\bolo.jpg" style="width: 250px;">
+
+<div id="mensagem"></div>
+
+<button onclick="iniciar()">Duvido clicar aqui 🎁</button>
+
+<audio id="musica" src="c:\Users\Victor\Downloads\aniversario\taylor.mp3"></audio>
+
+<script>
+
+/* MENSAGEM QUE ESCREVE SOZINHA */
+
+const texto = "Feliz aniversario! Quero que saiba que você é muito especial pra mim, não imaginei que fosse criar sentimentos tão rapido por alguem, como criei por você, foi tão derrepente, uma hora a gente tava la no teodoro, um de costa pro outro, sem se falar, mas eu tava com a expectativas boas de que alguma coisa fosse acontecer. Foi quando a gente começou a se seguir no instagram e começou a conversar. Foi um dos melhores dias. Que você consiga conquistar todos os seus objetivos e saiba sempre estarei aqui torcendo por você   🤍🎂";
+
+let i = 0;
+
+function escrever(){
+if(i < texto.length){
+document.getElementById("mensagem").innerHTML += texto.charAt(i);
+i++;
+setTimeout(escrever,50);
+}
+}
+
+/* BALÕES */
+
+function criarBaloes(){
+
+for(let i=0;i<20;i++){
+
+let b = document.createElement("div")
+b.className="balloon"
+
+b.style.left=Math.random()*100+"vw"
+
+let cores=["red","blue","yellow","green","purple","orange"]
+
+b.style.background=cores[Math.floor(Math.random()*cores.length)]
+
+b.style.animationDuration=(5+Math.random()*5)+"s"
+
+document.body.appendChild(b)
+
+}
+
+}
+
+/* INICIAR SURPRESA */
+
+function iniciar(){
+
+document.getElementById("musica").play()
+
+escrever()
+
+criarBaloes()
+
+}
+
+</script>
+
+</body>
+</html>
